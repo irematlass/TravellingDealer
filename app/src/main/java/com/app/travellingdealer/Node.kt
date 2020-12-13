@@ -3,23 +3,40 @@ package com.app.travellingdealer
 class Node(var data: Int) {
 
     var following: Node? = null
-
+    var head: Node? = null
     fun appendToEnd(x:Int,y:Int) {
+
         val end = Node(data)
         var n: Node? = this
-        while (n!!.following != null) {
-            n = n.following
+        if(head == null) head = Node(data)
+        else {
+            while (n!!.following != null) {
+                n = n.following
+            }
+            n.following = end
         }
-        n.following = end
     }
 
     // TODO:: Implement to return the length of the SinglyLinkedList
     // For example:: --> 5 --> 6 --> 7 --> 3 --> .
-    fun printNodes() {}
+    fun printNodes() {
+        var cur = head
+        while(cur != null) {
+            print("${cur.data} ")
+            cur = cur?.following
+        }
+    }
 
     // TODO:: Implement to return the length of the SinglyLinkedList
     fun length(h: Node?): Int {
-        return 0
+        var result=0
+        var cur = h
+        while(cur != null) {
+            print("${cur.data} ")
+            cur = cur?.following
+            result
+        }
+        return result
     }
 
     // TODO:: Implement to return the sum of the Nodes
