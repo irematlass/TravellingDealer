@@ -1,14 +1,15 @@
 package com.app.travellingdealer
 
-class Node(var data: Int) {
+class Node(var x:Int, var y:Int) {
+
 
     var following: Node? = null
     var head: Node? = null
     fun appendToEnd(x:Int,y:Int) {
 
-        val end = Node(data)
+        val end = Node(x,y)
         var n: Node? = this
-        if(head == null) head = Node(data)
+        if(head == null) head = Node(x,y)
         else {
             while (n!!.following != null) {
                 n = n.following
@@ -22,7 +23,7 @@ class Node(var data: Int) {
     fun printNodes() {
         var cur = head
         while(cur != null) {
-            print("${cur.data} ")
+            print("${cur.x},${cur.y} ")
             cur = cur?.following
         }
     }
@@ -32,33 +33,42 @@ class Node(var data: Int) {
         var result=0
         var cur = h
         while(cur != null) {
-            print("${cur.data} ")
             cur = cur?.following
-            result
+            result++
         }
         return result
     }
 
     // TODO:: Implement to return the sum of the Nodes
     fun sumOfNodes(): Int {
-        return 0
+        var result=0
+        var cur = head
+        while(cur != null) {
+            result+=calculateDistance(cur.x,cur.y)
+            cur = cur?.following
+        }
+        return result
     }
 
-    fun deleteNode(head: Node, data: Int): Node? {
+    fun deleteNode(head: Node, x: Int, y: Int): Node? {
         val n: Node = head
 
-        if(n.data == data) {
+        if(n.x==x && n.y==y) {
             return head.following
         }
         // TODO:: Implement the proper loop in order to remove given data
-
+           while(!(n.x==x && n.y==y)){
+              
+           }
         //
         return head
     }
     fun calculateDistance(x:Int,y:Int):Int{
-       val firstVal=(x-3)
+       var firstVal=Math.pow(x-3.toDouble(),2.0)
+        var secondVal=Math.pow(y-7.toDouble(),2.0)
 
-     return 0
+
+     return Math.sqrt(firstVal+secondVal).toInt()
     }
 }
 
